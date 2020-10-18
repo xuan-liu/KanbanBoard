@@ -8,6 +8,7 @@ class CardService {
         return new Promise ((resolve,reject) => {
             axios.get(url).then((res) => {
                 const data = res.data;
+                // console.log(data);
                 resolve(
                     data.map(post => ({
                         ...post
@@ -25,7 +26,15 @@ class CardService {
         return axios.post(url, {
             name: name,
             education: education,
-            contact: contact
+            contact: contact,
+            status: 'Applied'
+        });
+    }
+
+    // update card
+    static updateCard(id, status) {
+        return axios.put(url+id, {
+            status: status
         });
     }
 

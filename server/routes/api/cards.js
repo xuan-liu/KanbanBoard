@@ -15,10 +15,20 @@ router.post('/', async (req, res) => {
   await cards.insertOne({
     name: req.body.name,
     education: req.body.education,
-    contact: req.body.contact
+    contact: req.body.contact,
+    status: 'Applied'
   });
   res.status(201).send();
 });
+
+// Update Card
+router.put('/:id', async (req, res) => {
+    const cards = await loadCardsCollection();
+    const query = { _id: new mongodb.ObjectID(req.params.id) }
+    await cards.updateOne(query, {$set: {status: req.body.status}});
+    res.status(201).send();
+});
+
 
 // Delete Card
 router.delete('/:id', async (req, res) => {
