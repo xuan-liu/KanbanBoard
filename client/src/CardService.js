@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/cards';
+const url = 'http://localhost:5000/api/cards/';
 
 class CardService {
     // get cards
@@ -30,9 +30,9 @@ class CardService {
     }
 
     // delete card
-    // static deleteCard(id) {
-    //     return axios.delete('${url}${id}');
-    // }
+    static deleteCard(id) {
+        return axios.delete(url+ id);
+    }
 }
 
 export default CardService;

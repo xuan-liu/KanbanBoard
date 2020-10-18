@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container-fluid">
     <h2>Kanban Board</h2>
     <hr>
     <p class="error" v-if="error">{{ error }}</p>
@@ -7,29 +7,14 @@
     <!-- create card -->
     <div class="row">
       <div class="col form-inline">
-        <b-form-input
-          id="input-2"
-          v-model="newName"
-          required
-          placeholder="Enter Name"
-        ></b-form-input>
-
-        <b-form-input
-          id="input-2"
-          v-model="newEducation"
-          required
-          placeholder="Enter Education"
-        ></b-form-input>
-
-        <b-form-input
-          id="input-2"
-          v-model="newContact"
-          required
-          placeholder="Enter Contact"
-        ></b-form-input>
-        <b-button @click="createCard" variant="primary" class="ml-3">Add Candidate</b-button>
+        <input type="text" class="form-control" id="inputName" v-model="newName" placeholder="Enter Name" required>
+        <input type="text" class="form-control" id="inputEducation" v-model="newEducation" placeholder="Enter Education" required>
+        <input type="text" class="form-control" id="inputContact" v-model="newContact" placeholder="Enter Contact" required>
+        <button v-on:click="createCard" class="btn btn-primary ml-3">Add Candidate</button>
       </div>
     </div>
+
+    <p align="left">Double click cards to delete the candidate.</p>
 
 
     <!-- show board -->
@@ -42,13 +27,23 @@
             class="list-group kanban-column"
             :list="arrApplied"
             group="status"
-          >
+            >
             <div
               class="list-group-item"
               v-for="element in arrApplied"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
+
+              <!-- {{ element.name }}
+              {{ element.education }}
+              {{ element.contact }} -->
             </div>
           </draggable>
         </div>
@@ -66,9 +61,14 @@
             <div
               class="list-group-item"
               v-for="element in arrPhoneScreen"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
             </div>
           </draggable>
         </div>
@@ -86,9 +86,14 @@
             <div
               class="list-group-item"
               v-for="element in arrOnSite"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
             </div>
           </draggable>
         </div>
@@ -106,9 +111,14 @@
             <div
               class="list-group-item"
               v-for="element in arrOffered"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
             </div>
           </draggable>
         </div>
@@ -126,9 +136,14 @@
             <div
               class="list-group-item"
               v-for="element in arrAccepted"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
             </div>
           </draggable>
         </div>
@@ -146,9 +161,14 @@
             <div
               class="list-group-item"
               v-for="element in arrRejected"
-              :key="element.name"
+              :key="element._id"
+              v-on:dblclick="deleteCard(element._id)"
             >
-              {{ element.name }}
+              <div class="person">
+                <h6>{{ element.name }}</h6>
+                <p>{{ element.education }}, {{ element.contact }}</p>
+                <a href="#">Comment</a>
+              </div>
             </div>
           </draggable>
         </div>
@@ -197,11 +217,14 @@ export default {
     async createCard() {
       await CardService.insertCard(this.newName, this.newEducation, this.newContact);
       this.arrApplied = await CardService.getCards();
+      this.newName = '';
+      this.newEducation = '';
+      this.newContact = '';
+    },
+    async deleteCard(id) {
+      await CardService.deleteCard(id);
+      this.arrApplied = await CardService.getCards();
     }
-    // async deleteCard(id) {
-    //   await CardService.deleteCard(id);
-    //   this.arrApplied = await CardService.getCards();
-    // }
   }
   
 }
