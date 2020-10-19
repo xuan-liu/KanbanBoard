@@ -16,6 +16,7 @@ class CardService {
                 );
             })
             .catch((err)=> {
+                console.log(err);
                 reject(err);
             })
         });

@@ -37,8 +37,9 @@
             >
 
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -62,8 +63,9 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -87,8 +89,9 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -112,8 +115,9 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -137,8 +141,9 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -162,8 +167,9 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <a v-bind:href="element._id">{{ element.name }}</a>
+                <h6>{{ element.name }}</h6>
                 <p>{{ element.education }}, {{ element.contact }}</p>
+                <button v-on:click="showDetails(element._id)">Details</button>
               </div>
             </div>
           </draggable>
@@ -245,6 +251,10 @@ export default {
 
       location.reload();
       return false;
+    },
+
+    showDetails(id) { // this method is called when detail button is clicked
+        window.location.href = 'http://localhost:5000/api/cards/' + id;
     },
 
     async changeToApplied({ added }) {
