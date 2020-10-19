@@ -37,9 +37,8 @@
             >
 
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>
@@ -63,9 +62,8 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>
@@ -89,9 +87,8 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>
@@ -115,9 +112,8 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>
@@ -141,9 +137,8 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>
@@ -167,9 +162,8 @@
               v-on:dblclick="deleteCard(element._id)"
             >
               <div class="person">
-                <h6>{{ element.name }}</h6>
+                <a v-bind:href="element._id">{{ element.name }}</a>
                 <p>{{ element.education }}, {{ element.contact }}</p>
-                <a href="#">Comment</a>
               </div>
             </div>
           </draggable>

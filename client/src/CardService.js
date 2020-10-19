@@ -38,9 +38,14 @@ class CardService {
         });
     }
 
+    // Show Card Detail
+    static showCard(id) {
+        return axios.get(url+id);
+    }
+
     // delete card
     static deleteCard(id) {
-        return axios.delete(url+ id);
+        return axios.delete(url + id);
     }
 }
 

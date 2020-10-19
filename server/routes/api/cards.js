@@ -29,6 +29,13 @@ router.put('/:id', async (req, res) => {
     res.status(201).send();
 });
 
+// Show Card Detail
+router.get('/:id', async (req, res) => {
+    const cards = await loadCardsCollection();
+    const query = { _id: new mongodb.ObjectID(req.params.id) }
+    res.send(await cards.findOne(query, {}));
+  });
+
 
 // Delete Card
 router.delete('/:id', async (req, res) => {
